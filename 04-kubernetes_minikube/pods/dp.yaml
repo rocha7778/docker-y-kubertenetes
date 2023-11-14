@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-elixir-deployment
+  name: web-elixir-deployment
+  namespace: rocha
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-elixir-deployment
+  template:
+    metadata:
+      labels:
+        app: web-elixir-deployment
+    spec:
+      containers:
+      - image: rocha7778/ocp_web:v.2
+        name: web
+      restartPolicy: Always
+

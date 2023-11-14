@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-java
+  namespace: rocha
+  labels:
+    project: web_server
+    environment: dev
+spec:
+  containers:
+  - name: java
+    image: rocha7778/app-rest:v1.0
+    ports:
+    - containerPort: 8080

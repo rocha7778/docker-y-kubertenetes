@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-elixir-v1
+  namespace: rocha
+  labels:
+    project: web_server
+    environment: dev
+spec:
+  volumes:
+  - name: pv-storage
+    persistentVolumeClaim:
+     claimName: claim001
+  containers:
+   - name: elixir
+     image: rocha7778/ocp_web:v.2
+     ports:
+      - containerPort: 8080
+     volumeMounts:
+      - mountPath: "/usr/share/elixir/app"
+        name: pv-storage

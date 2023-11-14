@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: web-elixir
+  namespace: rocha
+  labels:
+    app: web-elixir
+    environment: dev
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-elixir
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: web-elixir
+        environment: dev
+    spec:
+      containers:
+      - name: web-elixir
+        image: rocha7778/ocp_web:v.2
+        ports:
+         - containerPort: 8080

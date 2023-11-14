@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: web-elixir
+  namespace: rocha
+spec:
+  replicas: 0
+  selector:
+    app: web-elixir
+  template:
+    metadata:
+      name: web-elixir
+      labels:
+        app: web-elixir
+    spec:
+      containers:
+      - name: web-elixir
+        image: rocha7778/ocp_web:v.2
+        ports:
+        - containerPort: 8080

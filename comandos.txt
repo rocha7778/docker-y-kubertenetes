@@ -1,0 +1,31 @@
+to point aws cluster
+aws eks update-kubeconfig --name rocha-cluster
+
+
+
+kubectl port-forward pod/app-product-service-7db66b54c-tw4rg 8080:8080
+curl 192.168.56.1:32587
+
+kubectl --dry-run=client -o yaml create deployment --image=nginx:lates nginx-deploment >deployment.yaml
+kubectl create ns miespacio --dry-run-client -o yaml
+
+
+kubectl -it exec pod/app-product-service-6d54d557bf-c292m bash -n rocha
+kubectl delete pod/mysql-deployment-5c99d8f769-9trkv -n rocha
+kubectl delete pod/app-product-service-6d54d557bf-lbmwt -n rocha
+kubectl logs pod/app-product-service-6d54d557bf-pnklz -n rocha
+
+
+watch -n1 "kubectl get pods"
+
+kubectl top pod <pod-name>
+kubectl describe PodMetrics <pod_name>
+
+
+# to sress the pod
+apt update
+apt install -y stress
+apt-get install -y htop
+stress --vm 1M
+
+
